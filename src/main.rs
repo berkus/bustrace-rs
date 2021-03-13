@@ -58,9 +58,11 @@ async fn run() -> Result<()> {
 
     let mut saved_registers = HashMap::<u16, u16>::new();
 
+    let delay = Duration::from_secs_f64(0.5 + 0.1 * registers.len() as f64);
+
     loop {
         run_command(&mut session, &registers, &mut saved_registers, &ranges).await?;
-        tokio::time::delay_for(Duration::from_secs(1)).await
+        tokio::time::delay_for(delay).await
     }
 }
 
