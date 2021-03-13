@@ -92,6 +92,7 @@ fn build_ranges(registers: &HashMap<String, Option<String>>) -> Result<Vec<Addre
             });
         }
     }
+    log::info!("Generated {} ranges", output.len());
     Ok(output)
 }
 
