@@ -81,6 +81,10 @@ fn build_ranges(registers: &HashMap<String, Option<String>>) -> Result<Vec<Addre
             } else if key == x.start + x.count {
                 x.count += 1;
                 added = true;
+            } else if key >= x.start && key <= x.start + x.count {
+                // already in there, ugh, how did that happen?
+                added = true;
+                assert!(false);
             } else {
                 // add new entry
             }
